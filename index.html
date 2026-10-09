@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0c1014" />
+  <title>OTP Verification V3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <div class="eyebrow">COMPONENT · 89</div>
+      <h1>OTP Verification <span>v3</span></h1>
+
+      <div class="otp-card">
+        <div class="card-grip"></div>
+
+        <h2>Verifique seu número</h2>
+        <p class="subtitle">
+          Digite o código de 4 dígitos enviado para
+          <strong>+55 15 •••••-0142</strong>.
+        </p>
+
+        <form id="otpForm" autocomplete="one-time-code" novalidate>
+          <div class="otp-row" role="group" aria-label="Código de verificação">
+            <input class="otp-input active" inputmode="numeric" autocomplete="one-time-code" maxlength="1" aria-label="Dígito 1" />
+            <input class="otp-input" inputmode="numeric" maxlength="1" aria-label="Dígito 2" />
+            <input class="otp-input" inputmode="numeric" maxlength="1" aria-label="Dígito 3" />
+            <input class="otp-input" inputmode="numeric" maxlength="1" aria-label="Dígito 4" />
+          </div>
+
+          <button type="submit" class="verify-btn">Verificar código</button>
+
+          <div id="status" class="status" aria-live="polite"></div>
+        </form>
+
+        <div class="message-preview">
+          <div class="message-icon">💬</div>
+          <div class="message-copy">
+            <div class="message-label">MENSAGEM · OTP</div>
+            <div><strong>4719</strong> é o seu código de verificação.</div>
+          </div>
+          <button id="fillBtn" class="fill-btn" type="button">Preencher</button>
+        </div>
+      </div>
+
+      <p class="tip">
+        Digite, cole ou use “Preencher” — <strong>4719</strong> é o código correto.
+      </p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
