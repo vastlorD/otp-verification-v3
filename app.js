@@ -2,8 +2,11 @@ const inputs = [...document.querySelectorAll(".otp-input")];
 const form = document.getElementById("otpForm");
 const fillBtn = document.getElementById("fillBtn");
 const statusBox = document.getElementById("status");
+const card = document.querySelector(".otp-card");
+const verifyBtn = form.querySelector(".verify-btn");
 
 const DEMO_CODE = "4719";
+let verificationTimer;
 
 function updateActive() {
   inputs.forEach((input) => input.classList.remove("active"));
@@ -17,7 +20,18 @@ function setStatus(message = "", type = "") {
 }
 
 function clearValidation() {
+  clearTimeout(verificationTimer);
+  card.classList.remove("is-success", "is-scanning", "is-denied");
+  verifyBtn.disabled = false;
+  verifyBtn.textContent = "AUTENTICAR →";
   inputs.forEach((input) => input.classList.remove("valid", "invalid"));
+}
+
+function animateSuccess() {
+  // Restart the celebration even when the same code is confirmed again.
+  void card.offsetWidth;
+  card.classList.add("is-success");
+  verifyBtn.textContent = "ACESSO AUTORIZADO ✓";
 }
 
 function fillCode(code) {
@@ -57,6 +71,8 @@ inputs.forEach((input, index) => {
     if (event.key === "Backspace" && !input.value && index > 0) {
       inputs[index - 1].focus();
       inputs[index - 1].value = "";
+      clearValidation();
+      setStatus();
     }
 
     if (event.key === "ArrowLeft" && index > 0) {
@@ -101,13 +117,24 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
+  card.classList.add("is-scanning");
+  verifyBtn.disabled = true;
+  verifyBtn.textContent = "VALIDANDO CHAVE…";
+  setStatus("› Executando protocolo de identificação…");
+  verificationTimer = setTimeout(() => {
+  card.classList.remove("is-scanning");
+  verifyBtn.disabled = false;
   if (code === DEMO_CODE) {
     inputs.forEach((input) => input.classList.add("valid"));
-    setStatus("Código confirmado com sucesso ✓", "ok");
+    setStatus("› Identidade confirmada. Bem-vindo à rede.", "ok");
+    animateSuccess();
   } else {
+    card.classList.add("is-denied");
+    verifyBtn.textContent = "TENTAR NOVAMENTE →";
     inputs.forEach((input) => input.classList.add("invalid"));
-    setStatus("Código incorreto. Para o teste, use 4719.", "error");
+    setStatus("› ACESSO NEGADO. Chave de teste: 4719.", "error");
   }
+  }, 1100);
 });
 
 window.addEventListener("load", () => inputs[0].focus());

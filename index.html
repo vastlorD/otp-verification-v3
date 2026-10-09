@@ -8,18 +8,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=4" />
 </head>
 <body>
   <main class="page-shell">
     <section class="hero">
-      <div class="eyebrow">COMPONENT · 89</div>
-      <h1>OTP Verification <span>v3</span></h1>
+      <div class="eyebrow">NIGHT CITY NETWORK / TERMINAL 089</div>
+      <h1>NEON<span>//</span>GATE</h1>
 
       <div class="otp-card">
-        <div class="card-grip"></div>
+        <div class="terminal-bar"><span>● CONEXÃO ATIVA</span><span>AUTH / 04</span></div><div class="scanner" aria-hidden="true"></div>
+        <div class="success-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="28" />
+            <path d="m19 33 9 9 18-20" />
+          </svg>
+        </div>
 
-        <h2>Verifique seu número</h2>
+        <h2>Confirme sua identidade</h2>
         <p class="subtitle">
           Digite o código de 4 dígitos enviado para
           <strong>+55 15 •••••-0142</strong>.
@@ -33,15 +39,15 @@
             <input class="otp-input" inputmode="numeric" maxlength="1" aria-label="Dígito 4" />
           </div>
 
-          <button type="submit" class="verify-btn">Verificar código</button>
+          <button type="submit" class="verify-btn">AUTENTICAR →</button>
 
           <div id="status" class="status" aria-live="polite"></div>
         </form>
 
         <div class="message-preview">
-          <div class="message-icon">💬</div>
+          <div class="message-icon">⌘</div>
           <div class="message-copy">
-            <div class="message-label">MENSAGEM · OTP</div>
+            <div class="message-label">PACOTE RECEBIDO / OTP</div>
             <div><strong>4719</strong> é o seu código de verificação.</div>
           </div>
           <button id="fillBtn" class="fill-btn" type="button">Preencher</button>
@@ -49,11 +55,11 @@
       </div>
 
       <p class="tip">
-        Digite, cole ou use “Preencher” — <strong>4719</strong> é o código correto.
+        <span>PROTOCOLO OTP · DEMONSTRAÇÃO LOCAL</span><br>Chave de teste: <strong>4719</strong>
       </p>
     </section>
   </main>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>
